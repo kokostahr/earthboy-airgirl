@@ -18,9 +18,26 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
     private bool jumped = false;
 
+    private PlayerInput playerInput;  // Reference to PlayerInput for each player
+
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();  // Get PlayerInput component
+
+        // Check if Player 1 or Player 2
+        if (playerInput.playerIndex == 0) // Player 1
+        {
+            // Set up Player 1 controls
+            playerInput.actions["Movement"].performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+            playerInput.actions["Jump"].performed += ctx => jumped = true;
+        }
+        else if (playerInput.playerIndex == 1) // Player 2
+        {
+            // Set up Player 2 controls
+            playerInput.actions["Movement"].performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+            playerInput.actions["Jump"].performed += ctx => jumped = true;
+        }
     }
 
 
