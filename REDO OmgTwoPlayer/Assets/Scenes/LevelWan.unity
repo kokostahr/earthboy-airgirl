@@ -492,6 +492,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1256135298263974922}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1544198045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6027532308432904496, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1256135298263974922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1670439268
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +848,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 50}
+  m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146217042
 MonoBehaviour:
@@ -891,15 +897,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.78
-  m_fontSizeBase: 47.78
+  m_fontSize: 73.94
+  m_fontSizeBase: 73.94
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1064,6 +1070,11 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 2035052096}
+    - target: {fileID: 8808233742856248531, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
+        type: 3}
+      propertyPath: handHoldPrompt
+      value: 
+      objectReference: {fileID: 1544198045}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1075,7 +1086,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1256135298263974922}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1544198045}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7d2fc940a6cce54ba0c93e8a6492ded, type: 3}

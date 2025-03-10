@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 
 [RequireComponent (typeof(CharacterController))]
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float holdHandDistance = 3f;
     private bool isHoldingHand = false;
     public float followSpeed = 5f;
+    [SerializeField]
+    GameObject handHoldPrompt;
 
 
     private void Start()
@@ -81,9 +83,9 @@ public class PlayerController : MonoBehaviour
                 player2.parent = player1; //Attaching player wan to player 2.
                 //might make an empty object for this a bit later, so that it looks smoother.
                 //why is player 2 being dragged LOL. Kitten helped with this part:
-                player2.GetComponent<CharacterController>().Move(Vector3.zero);
+                //player2.GetComponent<CharacterController>().Move(Vector3.zero);
                 //when their hands are holding, turn off movement completely^
-                player2.GetComponent<CharacterController>().detectCollisions = false;
+                //player2.GetComponent<CharacterController>().detectCollisions = false;
                 //to apparently 'avoid weird physics'
             }
             else //when they let go
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
                 //Remove player 2 from player 1
                 player2.parent = null;
                 //when the hands let go, disable that effect on player 2's ridigbody
-                player2.GetComponent<CharacterController>().detectCollisions = true;
+                //player2.GetComponent<CharacterController>().detectCollisions = true;
             }
         }   
     }
@@ -122,7 +124,11 @@ public class PlayerController : MonoBehaviour
             jumped = false;
         }
 
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        //more fixes by kitten, cuz why is it dragging?
+        float gravityMultiplier = isHoldingHand ? 1.5f : 1f; //increases the gravity while holding hands
+        float speedMultiplier = isHoldingHand ? 1.3f : 1f; //INcrease speed when hands held
+
+        playerVelocity.y += (gravityValue * gravityMultiplier) * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
         //something for player 2 to follow player as if being dragged or pulled. 
@@ -130,5 +136,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, player1.position - player1.forward * 1f, Time.deltaTime * followSpeed);
         }
+
+        //Want the UI TO SHOW UP WHENEVER THE PLAYERS ARE IN CLOSE PROXIMITY and aren't holding hands
+        if (Vector3.Distance(player1.position, player2.position) <= holdHandDistance && !isHoldingHand)
+        {
+            handHoldPrompt.SetActive(true);
+        }
+        else
+        {
+            handHoldPrompt.SetActive(false);
+        }
+
     }
 }
