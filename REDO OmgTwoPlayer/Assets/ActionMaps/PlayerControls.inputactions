@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HoldHand",
+                    "type": "Button",
+                    "id": "f3dc16fd-ca2c-4ca5-a440-0e45ce8fa47b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,6 +99,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "559cc3f0-c758-455d-a3e3-f8642dba8031",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

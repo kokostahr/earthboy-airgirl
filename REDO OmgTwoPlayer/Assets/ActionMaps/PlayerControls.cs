@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HoldHand"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3dc16fd-ca2c-4ca5-a440-0e45ce8fa47b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""559cc3f0-c758-455d-a3e3-f8642dba8031"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldHand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -214,6 +234,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerWan = asset.FindActionMap("PlayerWan", throwIfNotFound: true);
         m_PlayerWan_Movement = m_PlayerWan.FindAction("Movement", throwIfNotFound: true);
         m_PlayerWan_Jump = m_PlayerWan.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerWan_HoldHand = m_PlayerWan.FindAction("HoldHand", throwIfNotFound: true);
         // PlayerToo
         m_PlayerToo = asset.FindActionMap("PlayerToo", throwIfNotFound: true);
         m_PlayerToo_Movement = m_PlayerToo.FindAction("Movement", throwIfNotFound: true);
@@ -281,12 +302,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerWanActions> m_PlayerWanActionsCallbackInterfaces = new List<IPlayerWanActions>();
     private readonly InputAction m_PlayerWan_Movement;
     private readonly InputAction m_PlayerWan_Jump;
+    private readonly InputAction m_PlayerWan_HoldHand;
     public struct PlayerWanActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerWanActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerWan_Movement;
         public InputAction @Jump => m_Wrapper.m_PlayerWan_Jump;
+        public InputAction @HoldHand => m_Wrapper.m_PlayerWan_HoldHand;
         public InputActionMap Get() { return m_Wrapper.m_PlayerWan; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -302,6 +325,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @HoldHand.started += instance.OnHoldHand;
+            @HoldHand.performed += instance.OnHoldHand;
+            @HoldHand.canceled += instance.OnHoldHand;
         }
 
         private void UnregisterCallbacks(IPlayerWanActions instance)
@@ -312,6 +338,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @HoldHand.started -= instance.OnHoldHand;
+            @HoldHand.performed -= instance.OnHoldHand;
+            @HoldHand.canceled -= instance.OnHoldHand;
         }
 
         public void RemoveCallbacks(IPlayerWanActions instance)
@@ -387,6 +416,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnHoldHand(InputAction.CallbackContext context);
     }
     public interface IPlayerTooActions
     {

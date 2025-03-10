@@ -21,8 +21,15 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;  // Reference to PlayerInput for each player
 
     //Doing the stuff for handholding system:
-    [SerializeField] private Transform player1;
-    private GameObject player2;
+    [SerializeField] 
+    private Transform player1;
+    [SerializeField] 
+    private Transform player2;
+    [SerializeField]
+    private float holdHandDistance = 3f;
+    private bool isHoldingHand = false;
+    public float followSpeed = 5f;
+
 
     private void Start()
     {
@@ -59,59 +66,28 @@ public class PlayerController : MonoBehaviour
     public void OnHoldHand(InputAction.CallbackContext context)
     {
         //Check if their hands are ...holding lol:
-        if (player2 != null)
+        if (context.performed && Vector3.Distance(player1.position, player2.position) <= holdHandDistance)
         {
-            player2.GetComponent<Rigidbody>().isKinematic = false; //Enabling physics??
-            player2.transform.parent = null;
-            isHoldingHand = false;
+            //Turn on and off the hand holding
+            isHoldingHand = !isHoldingHand;
 
-            //turn off UI that prompts player to hold hand
-            //[insert].SetActive(false)
-        }
-
-        // Need something to check the distance between both players. Unsure if I should use raycast?
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        RaycastHit hit;
-
-        // Debugging: Draw the ray in the Scene view
-        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
-
-
-        if (Physics.Raycast(ray, out hit, pickUpRange))
-        {
-            // Check if the hit object has the tag "Player1"
-            if (hit.collider.CompareTag("Player1"))
+            if (isHoldingHand)
             {
-                // Hold the player
-                heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics to ensure the player doesnt move
-
-                // Attach player to left hand position. 
-                heldObject.transform.position = holdPositionLeft.position;
-                heldObject.transform.rotation = holdPositionLeft.rotation;
-                heldObject.transform.parent = holdPositionLeft;
-
-                //Make sure the pickuptext disappears after the object has been picked up
-                //pickUpText.SetActive(false);
+                //Disable player 2's movement
+                player2.GetComponent<PlayerController>().enabled = false;
+                //Attach player 2 to player 1, even if it looks crecrrakerouse
+                //idk what i was gonna write, took a brek
+                player2.parent = player1; //Attaching player wan to player 2.
+                //might make an empty object for this a bit later, so that it looks smoother.
             }
-
-            // Check if the hit object has the tag "Player2"
-            if (hit.collider.CompareTag("Player2"))
+            else
             {
-                // Hold the player
-                heldObject = hit.collider.gameObject;
-                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics to ensure the player doesnt move
-
-                // Attach player to left hand position. 
-                heldObject.transform.position = holdPositionLeft.position;
-                heldObject.transform.rotation = holdPositionLeft.rotation;
-                heldObject.transform.parent = holdPositionLeft;
-
-                //Make sure the pickuptext disappears after the object has been picked up
-                //pickUpText.SetActive(false);
+                //Enable player 2's movement again. 
+                player2.GetComponent<PlayerController>().enabled = true;
+                //Remove player 2 from player 1
+                player2.parent = null;
             }
-
-        }
+        }   
     }
   
 
@@ -140,5 +116,11 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        //something for player 2 to follow player as if being dragged or pulled. 
+        if (isHoldingHand)
+        {
+            transform.position = Vector3.Lerp(transform.position, player1.position - player1.forward * 1f, Time.deltaTime * followSpeed);
+        }
     }
 }
