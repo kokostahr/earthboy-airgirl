@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7235793530852595277}
   m_Layer: 0
   m_Name: PlayerWan
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,9 +95,17 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 422cec96-7cdc-4ec4-97bd-ddaa0f4c8c9d
     m_ActionName: Player/Jump[/Keyboard/space,/Keyboard/rightShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1ae7631c-9edd-4eed-b627-5f4cde8b0a89
+    m_ActionName: PlayerToo/Movement[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d0e9e2bd-bee2-4d42-bf32-71237d245067
+    m_ActionName: PlayerToo/Jump[/Keyboard/rightShift]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard1
-  m_DefaultActionMap: Player
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerWan
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8808233742856248531
