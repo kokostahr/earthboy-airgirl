@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 [RequireComponent (typeof(CharacterController))]
@@ -79,13 +80,20 @@ public class PlayerController : MonoBehaviour
                 //idk what i was gonna write, took a brek
                 player2.parent = player1; //Attaching player wan to player 2.
                 //might make an empty object for this a bit later, so that it looks smoother.
+                //why is player 2 being dragged LOL. Kitten helped with this part:
+                player2.GetComponent<CharacterController>().Move(Vector3.zero);
+                //when their hands are holding, turn off movement completely^
+                player2.GetComponent<CharacterController>().detectCollisions = false;
+                //to apparently 'avoid weird physics'
             }
-            else
+            else //when they let go
             {
                 //Enable player 2's movement again. 
                 player2.GetComponent<PlayerController>().enabled = true;
                 //Remove player 2 from player 1
                 player2.parent = null;
+                //when the hands let go, disable that effect on player 2's ridigbody
+                player2.GetComponent<CharacterController>().detectCollisions = true;
             }
         }   
     }
