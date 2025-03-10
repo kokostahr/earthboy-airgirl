@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;  // Reference to PlayerInput for each player
 
+    //Doing the stuff for handholding system:
+    [SerializeField] private Transform player1;
+    private GameObject player2;
+
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -51,6 +55,65 @@ public class PlayerController : MonoBehaviour
         //jumped = context.ReadValue<bool>();
         jumped = context.action.triggered;
     }
+
+    public void OnHoldHand(InputAction.CallbackContext context)
+    {
+        //Check if their hands are ...holding lol:
+        if (player2 != null)
+        {
+            player2.GetComponent<Rigidbody>().isKinematic = false; //Enabling physics??
+            player2.transform.parent = null;
+            isHoldingHand = false;
+
+            //turn off UI that prompts player to hold hand
+            //[insert].SetActive(false)
+        }
+
+        // Need something to check the distance between both players. Unsure if I should use raycast?
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(playerCamera.position, playerCamera.forward * pickUpRange, Color.red, 2f);
+
+
+        if (Physics.Raycast(ray, out hit, pickUpRange))
+        {
+            // Check if the hit object has the tag "Player1"
+            if (hit.collider.CompareTag("Player1"))
+            {
+                // Hold the player
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics to ensure the player doesnt move
+
+                // Attach player to left hand position. 
+                heldObject.transform.position = holdPositionLeft.position;
+                heldObject.transform.rotation = holdPositionLeft.rotation;
+                heldObject.transform.parent = holdPositionLeft;
+
+                //Make sure the pickuptext disappears after the object has been picked up
+                //pickUpText.SetActive(false);
+            }
+
+            // Check if the hit object has the tag "Player2"
+            if (hit.collider.CompareTag("Player2"))
+            {
+                // Hold the player
+                heldObject = hit.collider.gameObject;
+                heldObject.GetComponent<Rigidbody>().isKinematic = true; // Disable physics to ensure the player doesnt move
+
+                // Attach player to left hand position. 
+                heldObject.transform.position = holdPositionLeft.position;
+                heldObject.transform.rotation = holdPositionLeft.rotation;
+                heldObject.transform.parent = holdPositionLeft;
+
+                //Make sure the pickuptext disappears after the object has been picked up
+                //pickUpText.SetActive(false);
+            }
+
+        }
+    }
+  
 
     void Update()
     {
