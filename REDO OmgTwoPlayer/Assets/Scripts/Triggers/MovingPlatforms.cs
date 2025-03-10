@@ -1,14 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class MovingPlatforms : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //lets code the movement, I do not want to play with the animator right now.
+    public Vector3 moveDirection = Vector3.up; //The platform will move up
+    //how far it will move up
+    public float moveDistance = 4f;
+    //how fast it will move
+    public float platSpeed = 2.5f;
+
+    //now need to ensure it GOES BACK down. Im so tayad omg
+    private Vector3 startPosition;
+    private bool isMoving = false;
+
+
+
     void Start()
     {
-        
+        //The position the platform is in, 
+        startPosition = transform.position;
     }
+    //ACTUALLY NEED CODE HERE THAT WILL SAY WHEN THE PLAYERS ARE IN THE TRIGGERZONE,
+    //tHEN THE PLATFORM SHOULD START MOVING. WILL MODIFY LATER...TOO TAYAD RN
 
     // Update is called once per frame
     void Update()
