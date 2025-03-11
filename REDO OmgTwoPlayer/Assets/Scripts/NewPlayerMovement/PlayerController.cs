@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Transform player2;
     [SerializeField]
     private float holdHandDistance = 3f;
-    public bool isHoldingHand = false;
+    private bool isHoldingHand = false;
     public float followSpeed = 5f;
     [SerializeField]
     GameObject handHoldPrompt;

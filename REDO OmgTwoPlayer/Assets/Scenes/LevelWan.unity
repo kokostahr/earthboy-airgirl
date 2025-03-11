@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 58891239}
   - component: {fileID: 58891238}
   - component: {fileID: 58891237}
+  - component: {fileID: 58891240}
   m_Layer: 0
   m_Name: Gate (2)
   m_TagString: Untagged
@@ -364,6 +365,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58891235}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &58891240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58891235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85269d063f188c24d887b83c0ca294df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openWide: {x: 0, y: 5, z: 0}
+  openingSpeed: 5
 --- !u!1 &116438015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpening: 0
-  doorController: {fileID: 2012154257}
+  doorController: {fileID: 497588873}
 --- !u!1 &259853006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1062765911}
+  - component: {fileID: 1062765915}
   - component: {fileID: 1062765914}
   - component: {fileID: 1062765913}
   - component: {fileID: 1062765912}
@@ -3692,6 +3708,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062765910}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1062765915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062765910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e3bfdcfdd24e74f995c5497e079033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpening: 0
+  doorController: {fileID: 2012154257}
 --- !u!1 &1073275540
 GameObject:
   m_ObjectHideFlags: 0
@@ -5543,6 +5573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1631262936}
+  - component: {fileID: 1631262940}
   - component: {fileID: 1631262939}
   - component: {fileID: 1631262938}
   - component: {fileID: 1631262937}
@@ -5639,6 +5670,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631262935}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1631262940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631262935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2a480cc89be8440b3856c2f4d0d7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 58891235}
+  finalDoor: {fileID: 58891240}
+  playerController: {fileID: 1256135298263974923}
 --- !u!1 &1638845283
 GameObject:
   m_ObjectHideFlags: 0
@@ -5984,7 +6030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPermanent: 0
-  platforms: {fileID: 1320507069}
+  platforms: {fileID: 144415837}
 --- !u!1 &1785435368
 GameObject:
   m_ObjectHideFlags: 0
@@ -7430,6 +7476,11 @@ PrefabInstance:
       objectReference: {fileID: 2035052096}
     - target: {fileID: 8808233742856248531, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
         type: 3}
+      propertyPath: playerSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808233742856248531, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
+        type: 3}
       propertyPath: handHoldPrompt
       value: 
       objectReference: {fileID: 2146217040}
@@ -7473,6 +7524,11 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 2035052096}
+    - target: {fileID: 1016270645950798813, guid: caf55fd91ac934a4493e9f8dcbc98c3f,
+        type: 3}
+      propertyPath: playerSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1016270645950798813, guid: caf55fd91ac934a4493e9f8dcbc98c3f,
         type: 3}
       propertyPath: handHoldPrompt

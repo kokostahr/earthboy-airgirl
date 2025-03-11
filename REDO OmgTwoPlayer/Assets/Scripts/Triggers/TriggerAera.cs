@@ -50,7 +50,7 @@ public class TriggerAera : MonoBehaviour
     void ActivateObject()
     {
         //method that will determine if both players are inside the trigger, and react accordingly
-        if (playe1Inside && playe2Inside && playerController.isHoldingHand) //if both are inside, holding hands, then
+        if (playe1Inside && playe2Inside) //if both are inside, holding hands, then
         {
             //activate the platform or the door. Need better code? will i move these things in code or...with the animator. we shall see lol
            finalDoor.LoveDoorOpen();
