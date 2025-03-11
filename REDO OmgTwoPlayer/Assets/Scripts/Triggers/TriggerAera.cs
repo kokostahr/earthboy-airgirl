@@ -10,6 +10,9 @@ public class TriggerAera : MonoBehaviour
     //Going to assign the object that will activate, whether its a platform or door...will see
     public GameObject objectToActivate;
 
+    //rerefence to the doors of love
+    public DoorsOfLOve finalDoor;
+
     //LET'S START USING TRIGGERS! 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,7 +34,7 @@ public class TriggerAera : MonoBehaviour
     {
         if (other.CompareTag("Player1")) //why is it highlighted red bruh
         {
-            //if player 1 enters, then set the bool to true.
+            //if player 1 exits, then set the bool to false.
             playe1Inside = false;
         }
 
@@ -49,11 +52,11 @@ public class TriggerAera : MonoBehaviour
         if (playe1Inside && playe2Inside) //if both are inside, then
         {
             //activate the platform or the door. Need better code? will i move these things in code or...with the animator. we shall see lol
-            objectToActivate.SetActive(true);
+           finalDoor.LoveDoorOpen();
         }
         else //IF BOTH aren't inside, then the object will NOOT appear for now
         {
-            objectToActivate.SetActive(false);
+            finalDoor.LoveDoorClose();
         }
     }
 }

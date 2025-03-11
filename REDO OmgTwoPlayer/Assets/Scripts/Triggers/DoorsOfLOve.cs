@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class DoorsOfLOve : MonoBehaviour
 {
-    public Vector3 openSlightly = new Vector3(0, 5, 0);
-    public float openSpeed = 2f;
+    public Vector3 openWide = new Vector3(0, 5, 0);
+    public float openingSpeed = 5f;
 
     private Vector3 closedPosition;
     private Vector3 openPosition;
@@ -16,26 +16,25 @@ public class DoorController : MonoBehaviour
     void Start()
     {
         closedPosition = transform.position;
-        openPosition = closedPosition + openSlightly;
+        openPosition = closedPosition + openWide;
     }
 
-    
+
     void Update()
     {
         if (isOpen)
         {
             Vector3 targetPosition = isOpen ? openPosition : closedPosition;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openingSpeed);
         }
-       
     }
 
-    public void DoorOpen()
+    public void LoveDoorOpen()
     {
         isOpen = true;
     }
 
-    public void DoorClose()
+    public void LoveDoorClose()
     {
         isOpen = false;
     }

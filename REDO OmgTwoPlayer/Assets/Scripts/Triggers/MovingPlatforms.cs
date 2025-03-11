@@ -24,9 +24,23 @@ public class MovingPlatforms : MonoBehaviour
     //ACTUALLY NEED CODE HERE THAT WILL SAY WHEN THE PLAYERS ARE IN THE TRIGGERZONE,
     //tHEN THE PLATFORM SHOULD START MOVING. WILL MODIFY LATER...TOO TAYAD RN
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (isMoving)
+        {
+            float movement = Mathf.PingPong(Time.time  *platSpeed, moveDistance);
+            transform.position = startPosition + (moveDirection * movement);
+        }
+    }
+
+    public void ActivatePlatform()
+    {
+        isMoving = true;
+    }
+
+    public void DeactivatePlatform()
+    {
+        isMoving = false;
     }
 }
