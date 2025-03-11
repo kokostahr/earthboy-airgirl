@@ -24,7 +24,7 @@ public class DoorTriggers : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //Tell the other script to stop moving now. set bool to false
-        if (other.CompareTag("Player1") || other.CompareTag("PLayer2"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             isOpening = false;
             doorController.DoorClose();
