@@ -855,9 +855,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Blue and Red were torn apart, they're lost in a maze filled with obstacles.
-    But Love finds a way. They must work together, solve puzzles, moving platforms,
-    and opening doors to reunite. Only then can they hold hands and walk off into
-    the sunset\u2026"
+    But their love will find a way. They must work together to reunite. Only then
+    can they hold hands and walk off into the sunset\u2026xD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
