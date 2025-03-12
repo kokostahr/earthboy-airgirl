@@ -24,6 +24,7 @@ public class DoorController : MonoBehaviour
     {
         if (isOpen)
         {
+            //If target position is true then openPosition if not closedPosition
             Vector3 targetPosition = isOpen ? openPosition : closedPosition;
             transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
         }
