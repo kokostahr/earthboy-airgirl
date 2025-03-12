@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 35687798}
   - component: {fileID: 35687801}
   m_Layer: 5
-  m_Name: start button
+  m_Name: menu button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 781081bf600a49241a6a90d5f490f444, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a21f63df994b3445a3bff4ec1f542bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 1906732850}
   - component: {fileID: 1906732849}
   m_Layer: 5
-  m_Name: introtext
+  m_Name: outrotext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,10 +854,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blue and Red were torn apart, they're lost in a maze filled with obstacles.
-    But Love finds a way. They must work together, solve puzzles, moving platforms,
-    and opening doors to reunite. Only then can they hold hands and walk off into
-    the sunset\u2026"
+  m_text: You did it! The lovers finally reunited!! Nothing could keep them apart,
+    not fences, not even a maze built to separate them. Love always wins.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
