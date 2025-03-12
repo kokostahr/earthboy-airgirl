@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 139001933}
   m_Layer: 0
   m_Name: End-GameTrigger
-  m_TagString: Untagged
+  m_TagString: EndG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14750,7 +14750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to hold hands
+  m_text: Press E to hold/ let go
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14967,6 +14967,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8808233742856248531, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
         type: 3}
+      propertyPath: loadThatScene
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808233742856248531, guid: dbfc3ef709bcdd544bc17431b5adc0ea,
+        type: 3}
       propertyPath: handHoldPrompt
       value: 
       objectReference: {fileID: 2146217040}
@@ -15014,6 +15019,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016270645950798813, guid: caf55fd91ac934a4493e9f8dcbc98c3f,
+        type: 3}
+      propertyPath: loadThatScene
+      value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 1016270645950798813, guid: caf55fd91ac934a4493e9f8dcbc98c3f,
         type: 3}

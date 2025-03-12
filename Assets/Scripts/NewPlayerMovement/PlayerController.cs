@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public float followSpeed = 5f;
     [SerializeField]
     GameObject handHoldPrompt;
+
+    public string loadThatScene;
 
 
     private void Start()
@@ -147,5 +150,13 @@ public class PlayerController : MonoBehaviour
             handHoldPrompt.SetActive(false);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EndG"))
+        {
+            SceneManager.LoadScene(loadThatScene);
+        }
     }
 }
